@@ -1,13 +1,17 @@
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import Icon from '@/components/ui/icon';
-import { useToast } from '@/hooks/use-toast';
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import Icon from "@/components/ui/icon";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
   const { toast } = useToast();
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -16,36 +20,58 @@ const Index = () => {
       title: "Сообщение отправлено",
       description: "Виктория свяжется с вами в ближайшее время",
     });
-    setFormData({ name: '', email: '', message: '' });
+    setFormData({ name: "", email: "", message: "" });
   };
 
   const ceramicPlaceholders = [
-    { id: 1, title: 'Керамическая чаша', category: 'Посуда' },
-    { id: 2, title: 'Коты', category: 'Декор' },
-    { id: 3, title: 'Курительница', category: 'Атрибутика' },
-    { id: 4, title: 'Вазы', category: 'Интерьер' },
+    { id: 1, title: "Керамическая чаша", category: "Посуда" },
+    { id: 2, title: "Коты", category: "Декор" },
+    { id: 3, title: "Курительница", category: "Атрибутика" },
+    { id: 4, title: "Вазы", category: "Интерьер" },
   ];
 
   const kimonoPlaceholders = [
-    { id: 1, title: 'Винтажное кимоно' },
-    { id: 2, title: 'Шёлковое кимоно' },
-    { id: 3, title: 'Коллекционное кимоно' },
+    { id: 1, title: "Винтажное кимоно" },
+    { id: 2, title: "Шёлковое кимоно" },
+    { id: 3, title: "Коллекционное кимоно" },
   ];
 
   const videoLinks = [
-    { id: 1, url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', title: 'Коллекция винтажных кимоно', description: 'Обзор эксклюзивных кимоно из Японии и Европы' },
-    { id: 2, url: '', title: 'Как носить кимоно модно', description: 'Стилизация кимоно в современных образах' },
-    { id: 3, url: '', title: 'Керамика ручной работы', description: 'Процесс создания уникальных изделий с котами' },
+    {
+      id: 1,
+      url: "https://t.me/c/2913140693/64",
+      title: "Коллекция винтажных кимоно",
+      description: "Обзор эксклюзивных кимоно из Японии и Европы",
+    },
+    {
+      id: 2,
+      url: "https://t.me/c/2913140693/51",
+      title: "Как носить кимоно модно",
+      description: "Стилизация кимоно в современных образах",
+    },
+    {
+      id: 3,
+      url: "https://t.me/c/2913140693/40",
+      title: "Керамика ручной работы",
+      description: "Процесс создания уникальных изделий с котами",
+    },
   ];
 
   const getVideoId = (url: string) => {
     if (!url) return null;
-    const youtubeMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
-    if (youtubeMatch) return { type: 'youtube', id: youtubeMatch[1] };
-    
+    const youtubeMatch = url.match(
+      /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/,
+    );
+    if (youtubeMatch) return { type: "youtube", id: youtubeMatch[1] };
+
     const telegramMatch = url.match(/t\.me\/([^\/]+)\/(\d+)/);
-    if (telegramMatch) return { type: 'telegram', channel: telegramMatch[1], id: telegramMatch[2] };
-    
+    if (telegramMatch)
+      return {
+        type: "telegram",
+        channel: telegramMatch[1],
+        id: telegramMatch[2],
+      };
+
     return null;
   };
 
@@ -54,10 +80,14 @@ const Index = () => {
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-background to-black opacity-60" />
-        <div className="absolute inset-0" style={{
-          backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.05) 0%, transparent 50%)',
-        }} />
-        
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.05) 0%, transparent 50%)",
+          }}
+        />
+
         <div className="container relative mx-auto px-4 py-20 text-center animate-fade-in">
           <div className="mx-auto max-w-4xl">
             <div className="mb-6 text-6xl">🐱</div>
@@ -75,11 +105,18 @@ const Index = () => {
               </p>
             </div>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="gap-2 border-primary bg-primary text-black hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="gap-2 border-primary bg-primary text-black hover:bg-primary/90"
+              >
                 <Icon name="Send" size={20} />
                 Telegram
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 border-primary/50 text-primary hover:bg-primary/10">
+              <Button
+                size="lg"
+                variant="outline"
+                className="gap-2 border-primary/50 text-primary hover:bg-primary/10"
+              >
                 <Icon name="Instagram" size={20} />
                 Instagram
               </Button>
@@ -99,45 +136,54 @@ const Index = () => {
             <div className="inline-block rounded-full border-2 border-primary/30 px-6 py-2 text-sm font-medium text-primary">
               Стилист по кимоно
             </div>
-            
+
             <h2 className="text-5xl font-bold text-primary md:text-6xl">
               Научу носить кимоно модно
             </h2>
-            
+
             <div className="space-y-6 text-lg leading-relaxed text-foreground/80">
               <p className="text-2xl font-light text-primary/90">
-                Виктория — это человек с безупречным чувством вкуса, 
-                который научит вас носить коллекционные кимоно в повседневной жизни.
+                Виктория — это человек с безупречным чувством вкуса, который
+                научит вас носить коллекционные кимоно в повседневной жизни.
               </p>
               <p>
-                Каждое кимоно в моей коллекции тщательно отобрано на аукционах Японии и Европы. 
-                Это не просто одежда — это произведения искусства с богатой историей, 
-                которые можно носить каждый день, создавая уникальные образы.
+                Каждое кимоно в моей коллекции тщательно отобрано на аукционах
+                Японии и Европы. Это не просто одежда — это произведения
+                искусства с богатой историей, которые можно носить каждый день,
+                создавая уникальные образы.
               </p>
               <p>
-                Я помогу вам подобрать идеальное винтажное кимоно и покажу, 
-                как интегрировать его в современный гардероб, сохраняя элегантность и стиль.
+                Я помогу вам подобрать идеальное винтажное кимоно и покажу, как
+                интегрировать его в современный гардероб, сохраняя элегантность
+                и стиль.
               </p>
             </div>
 
             <div className="grid gap-6 pt-12 md:grid-cols-3">
               <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
                 <div className="mb-4 text-4xl">👘</div>
-                <h3 className="mb-3 text-xl font-semibold text-primary">Винтажные кимоно</h3>
+                <h3 className="mb-3 text-xl font-semibold text-primary">
+                  Винтажные кимоно
+                </h3>
                 <p className="text-sm text-foreground/70">
-                  Эксклюзивная коллекция аутентичных японских и европейских кимоно
+                  Эксклюзивная коллекция аутентичных японских и европейских
+                  кимоно
                 </p>
               </Card>
               <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
                 <div className="mb-4 text-4xl">✨</div>
-                <h3 className="mb-3 text-xl font-semibold text-primary">Стилизация</h3>
+                <h3 className="mb-3 text-xl font-semibold text-primary">
+                  Стилизация
+                </h3>
                 <p className="text-sm text-foreground/70">
                   Индивидуальный подход к созданию современных образов с кимоно
                 </p>
               </Card>
               <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
                 <div className="mb-4 text-4xl">🐱</div>
-                <h3 className="mb-3 text-xl font-semibold text-primary">Керамика</h3>
+                <h3 className="mb-3 text-xl font-semibold text-primary">
+                  Керамика
+                </h3>
                 <p className="text-sm text-foreground/70">
                   Уникальные изделия ручной работы с душой и любовью к котам
                 </p>
@@ -156,30 +202,42 @@ const Index = () => {
               Коллекционные кимоно
             </h2>
             <p className="mx-auto max-w-2xl text-lg text-foreground/70">
-              Каждое кимоно — это история, рассказанная через шелк и традиционные узоры
+              Каждое кимоно — это история, рассказанная через шелк и
+              традиционные узоры
             </p>
           </div>
 
           <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {kimonoPlaceholders.map((item, idx) => (
-              <Card 
-                key={item.id} 
+              <Card
+                key={item.id}
                 className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
                 <div className="relative aspect-[3/4] overflow-hidden bg-muted/30">
                   <div className="flex h-full items-center justify-center">
                     <div className="text-center">
-                      <Icon name="Image" size={64} className="mx-auto mb-4 text-primary/30" />
-                      <p className="text-sm text-foreground/50">Загрузите ваше фото кимоно</p>
+                      <Icon
+                        name="Image"
+                        size={64}
+                        className="mx-auto mb-4 text-primary/30"
+                      />
+                      <p className="text-sm text-foreground/50">
+                        Загрузите ваше фото кимоно
+                      </p>
                     </div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-4 text-xl font-semibold text-foreground">{item.title}</h3>
+                  <h3 className="mb-4 text-xl font-semibold text-foreground">
+                    {item.title}
+                  </h3>
                   <p className="mb-4 text-sm text-primary">По запросу</p>
-                  <Button className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black" variant="outline">
+                  <Button
+                    className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
+                    variant="outline"
+                  >
                     <Icon name="MessageCircle" size={18} />
                     Узнать подробнее
                   </Button>
@@ -191,13 +249,19 @@ const Index = () => {
           <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 p-12 backdrop-blur-sm">
             <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
               <div className="flex-1">
-                <h3 className="mb-4 text-3xl font-bold text-primary">Новые поступления еженедельно</h3>
+                <h3 className="mb-4 text-3xl font-bold text-primary">
+                  Новые поступления еженедельно
+                </h3>
                 <p className="text-foreground/70">
-                  Подписывайтесь на Telegram-канал, чтобы первыми узнавать о новых винтажных кимоно, 
-                  украшениях и аксессуарах. Консультации по стилизации и подбору образов.
+                  Подписывайтесь на Telegram-канал, чтобы первыми узнавать о
+                  новых винтажных кимоно, украшениях и аксессуарах. Консультации
+                  по стилизации и подбору образов.
                 </p>
               </div>
-              <Button size="lg" className="gap-2 bg-primary text-black hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="gap-2 bg-primary text-black hover:bg-primary/90"
+              >
                 <Icon name="Send" size={20} />
                 Telegram канал
               </Button>
@@ -221,16 +285,22 @@ const Index = () => {
 
           <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {ceramicPlaceholders.map((item, idx) => (
-              <Card 
-                key={item.id} 
+              <Card
+                key={item.id}
                 className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
                 <div className="relative aspect-square overflow-hidden bg-muted/30">
                   <div className="flex h-full items-center justify-center">
                     <div className="text-center">
-                      <Icon name="Image" size={48} className="mx-auto mb-3 text-primary/30" />
-                      <p className="text-xs text-foreground/50">Загрузите фото керамики</p>
+                      <Icon
+                        name="Image"
+                        size={48}
+                        className="mx-auto mb-3 text-primary/30"
+                      />
+                      <p className="text-xs text-foreground/50">
+                        Загрузите фото керамики
+                      </p>
                     </div>
                   </div>
                   <div className="absolute right-3 top-3">
@@ -240,8 +310,13 @@ const Index = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-4 text-lg font-semibold text-foreground">{item.title}</h3>
-                  <Button variant="outline" className="w-full gap-2 border-primary/50 text-primary hover:bg-primary hover:text-black">
+                  <h3 className="mb-4 text-lg font-semibold text-foreground">
+                    {item.title}
+                  </h3>
+                  <Button
+                    variant="outline"
+                    className="w-full gap-2 border-primary/50 text-primary hover:bg-primary hover:text-black"
+                  >
                     <Icon name="MessageCircle" size={18} />
                     Заказать
                   </Button>
@@ -253,12 +328,17 @@ const Index = () => {
           <div className="text-center">
             <Card className="inline-block border-primary/30 bg-card/50 p-12 backdrop-blur-sm">
               <div className="mb-6 text-6xl">✨</div>
-              <h3 className="mb-4 text-3xl font-bold text-primary">Работаю на заказ</h3>
+              <h3 className="mb-4 text-3xl font-bold text-primary">
+                Работаю на заказ
+              </h3>
               <p className="mb-8 max-w-lg text-foreground/70">
-                Создаю уникальные керамические изделия по вашим пожеланиям: 
+                Создаю уникальные керамические изделия по вашим пожеланиям:
                 чаши, вазы, тарелки, курительницы, лингамы и йони, фигурки котов
               </p>
-              <Button size="lg" className="gap-2 bg-primary text-black hover:bg-primary/90">
+              <Button
+                size="lg"
+                className="gap-2 bg-primary text-black hover:bg-primary/90"
+              >
                 <Icon name="Sparkles" size={18} />
                 Обсудить заказ
               </Button>
@@ -284,46 +364,64 @@ const Index = () => {
             {videoLinks.map((video, idx) => {
               const videoData = getVideoId(video.url);
               return (
-                <Card 
-                  key={video.id} 
+                <Card
+                  key={video.id}
                   className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
                   style={{ animationDelay: `${idx * 150}ms` }}
                 >
                   <div className="relative aspect-video overflow-hidden bg-black">
-                    {videoData?.type === 'youtube' ? (
+                    {videoData?.type === "youtube" ? (
                       <iframe
                         src={`https://www.youtube.com/embed/${videoData.id}`}
                         className="h-full w-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                       />
-                    ) : videoData?.type === 'telegram' ? (
+                    ) : videoData?.type === "telegram" ? (
                       <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
-                        <a 
-                          href={video.url} 
-                          target="_blank" 
+                        <a
+                          href={video.url}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="flex flex-col items-center gap-4 transition-transform hover:scale-110"
                         >
                           <div className="rounded-full bg-primary/20 p-6">
-                            <Icon name="Send" size={40} className="text-primary" />
+                            <Icon
+                              name="Send"
+                              size={40}
+                              className="text-primary"
+                            />
                           </div>
-                          <span className="text-sm font-medium text-primary">Смотреть в Telegram</span>
+                          <span className="text-sm font-medium text-primary">
+                            Смотреть в Telegram
+                          </span>
                         </a>
                       </div>
                     ) : (
                       <div className="flex h-full items-center justify-center">
                         <div className="text-center">
-                          <Icon name="Video" size={64} className="mx-auto mb-4 text-primary/30" />
-                          <p className="text-sm text-foreground/50">Добавьте ссылку на видео</p>
-                          <p className="mt-2 text-xs text-foreground/40">YouTube или Telegram</p>
+                          <Icon
+                            name="Video"
+                            size={64}
+                            className="mx-auto mb-4 text-primary/30"
+                          />
+                          <p className="text-sm text-foreground/50">
+                            Добавьте ссылку на видео
+                          </p>
+                          <p className="mt-2 text-xs text-foreground/40">
+                            YouTube или Telegram
+                          </p>
                         </div>
                       </div>
                     )}
                   </div>
                   <div className="p-6">
-                    <h3 className="mb-2 text-lg font-semibold text-foreground">{video.title}</h3>
-                    <p className="text-sm text-foreground/60">{video.description}</p>
+                    <h3 className="mb-2 text-lg font-semibold text-foreground">
+                      {video.title}
+                    </h3>
+                    <p className="text-sm text-foreground/60">
+                      {video.description}
+                    </p>
                   </div>
                 </Card>
               );
@@ -332,20 +430,47 @@ const Index = () => {
 
           <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 p-8 backdrop-blur-sm md:p-12">
             <div className="text-center">
-              <Icon name="Info" size={48} className="mx-auto mb-6 text-primary" />
-              <h3 className="mb-4 text-2xl font-bold text-primary">Как добавить свои видео</h3>
+              <Icon
+                name="Info"
+                size={48}
+                className="mx-auto mb-6 text-primary"
+              />
+              <h3 className="mb-4 text-2xl font-bold text-primary">
+                Как добавить свои видео
+              </h3>
               <div className="mx-auto max-w-2xl space-y-4 text-left text-foreground/70">
                 <div className="flex gap-3">
                   <div className="shrink-0 text-primary">1.</div>
-                  <p>Загрузите видео на <strong className="text-primary">YouTube</strong> или опубликуйте в своём <strong className="text-primary">Telegram-канале</strong></p>
+                  <p>
+                    Загрузите видео на{" "}
+                    <strong className="text-primary">YouTube</strong> или
+                    опубликуйте в своём{" "}
+                    <strong className="text-primary">Telegram-канале</strong>
+                  </p>
                 </div>
                 <div className="flex gap-3">
                   <div className="shrink-0 text-primary">2.</div>
-                  <p>Скопируйте ссылку на видео (например: <code className="rounded bg-black/30 px-2 py-1 text-xs">youtube.com/watch?v=...</code> или <code className="rounded bg-black/30 px-2 py-1 text-xs">t.me/канал/123</code>)</p>
+                  <p>
+                    Скопируйте ссылку на видео (например:{" "}
+                    <code className="rounded bg-black/30 px-2 py-1 text-xs">
+                      youtube.com/watch?v=...
+                    </code>{" "}
+                    или{" "}
+                    <code className="rounded bg-black/30 px-2 py-1 text-xs">
+                      t.me/канал/123
+                    </code>
+                    )
+                  </p>
                 </div>
                 <div className="flex gap-3">
                   <div className="shrink-0 text-primary">3.</div>
-                  <p>В редакторе найдите строку с <code className="rounded bg-black/30 px-2 py-1 text-xs">url: ''</code> в массиве videoLinks и вставьте вашу ссылку</p>
+                  <p>
+                    В редакторе найдите строку с{" "}
+                    <code className="rounded bg-black/30 px-2 py-1 text-xs">
+                      url: ''
+                    </code>{" "}
+                    в массиве videoLinks и вставьте вашу ссылку
+                  </p>
                 </div>
               </div>
             </div>
@@ -358,7 +483,11 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <div className="mb-12 text-center">
-              <Icon name="HelpCircle" size={48} className="mx-auto mb-4 text-primary" />
+              <Icon
+                name="HelpCircle"
+                size={48}
+                className="mx-auto mb-4 text-primary"
+              />
               <h2 className="mb-6 text-4xl font-bold text-primary md:text-5xl">
                 Как загрузить фотографии
               </h2>
@@ -371,9 +500,12 @@ const Index = () => {
                     1
                   </div>
                   <div>
-                    <h3 className="mb-2 text-xl font-semibold text-foreground">Откройте редактор</h3>
+                    <h3 className="mb-2 text-xl font-semibold text-foreground">
+                      Откройте редактор
+                    </h3>
                     <p className="text-foreground/70">
-                      В редакторе poehali.dev наведите курсор на изображение с иконкой Image и нажмите на него
+                      В редакторе poehali.dev наведите курсор на изображение с
+                      иконкой Image и нажмите на него
                     </p>
                   </div>
                 </div>
@@ -383,9 +515,12 @@ const Index = () => {
                     2
                   </div>
                   <div>
-                    <h3 className="mb-2 text-xl font-semibold text-foreground">Загрузите фото</h3>
+                    <h3 className="mb-2 text-xl font-semibold text-foreground">
+                      Загрузите фото
+                    </h3>
                     <p className="text-foreground/70">
-                      Появится окно загрузки. Выберите ваши фотографии керамики или кимоно с компьютера
+                      Появится окно загрузки. Выберите ваши фотографии керамики
+                      или кимоно с компьютера
                     </p>
                   </div>
                 </div>
@@ -395,21 +530,31 @@ const Index = () => {
                     3
                   </div>
                   <div>
-                    <h3 className="mb-2 text-xl font-semibold text-foreground">Готово!</h3>
+                    <h3 className="mb-2 text-xl font-semibold text-foreground">
+                      Готово!
+                    </h3>
                     <p className="text-foreground/70">
-                      Фотографии автоматически заменят заглушки. Вы можете загружать сколько угодно изображений
+                      Фотографии автоматически заменят заглушки. Вы можете
+                      загружать сколько угодно изображений
                     </p>
                   </div>
                 </div>
 
                 <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
                   <div className="flex gap-3">
-                    <Icon name="Lightbulb" size={24} className="shrink-0 text-primary" />
+                    <Icon
+                      name="Lightbulb"
+                      size={24}
+                      className="shrink-0 text-primary"
+                    />
                     <div>
                       <p className="font-semibold text-primary">Совет:</p>
                       <p className="text-sm text-foreground/70">
-                        Для фото: используйте качественные изображения с хорошим освещением.<br/>
-                        Для видео: загрузите на YouTube или Telegram, затем добавьте ссылку в код
+                        Для фото: используйте качественные изображения с хорошим
+                        освещением.
+                        <br />
+                        Для видео: загрузите на YouTube или Telegram, затем
+                        добавьте ссылку в код
                       </p>
                     </div>
                   </div>
@@ -435,12 +580,16 @@ const Index = () => {
 
             <div className="grid gap-8 lg:grid-cols-2">
               <Card className="border-primary/30 bg-card/50 p-8 backdrop-blur-sm">
-                <h3 className="mb-6 text-2xl font-bold text-foreground">Отправить сообщение</h3>
+                <h3 className="mb-6 text-2xl font-bold text-foreground">
+                  Отправить сообщение
+                </h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <Input
                     placeholder="Ваше имя"
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     required
                     className="border-primary/30 bg-background/50"
                   />
@@ -448,19 +597,26 @@ const Index = () => {
                     type="email"
                     placeholder="Email"
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     required
                     className="border-primary/30 bg-background/50"
                   />
                   <Textarea
                     placeholder="Ваше сообщение"
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     required
                     rows={5}
                     className="border-primary/30 bg-background/50"
                   />
-                  <Button type="submit" className="w-full gap-2 bg-primary text-black hover:bg-primary/90">
+                  <Button
+                    type="submit"
+                    className="w-full gap-2 bg-primary text-black hover:bg-primary/90"
+                  >
                     <Icon name="Send" size={18} />
                     Отправить
                   </Button>
@@ -472,14 +628,25 @@ const Index = () => {
                   <div className="bg-gradient-to-br from-primary/20 to-primary/10 p-8">
                     <div className="mb-6 flex items-center gap-4">
                       <div className="rounded-full border-2 border-primary/30 bg-black/40 p-4 backdrop-blur-sm">
-                        <Icon name="ShoppingBag" size={28} className="text-primary" />
+                        <Icon
+                          name="ShoppingBag"
+                          size={28}
+                          className="text-primary"
+                        />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-foreground">Виктория Винтаж</h4>
-                        <p className="text-sm text-foreground/60">Кимоно • Украшения • Стиль</p>
+                        <h4 className="text-xl font-bold text-foreground">
+                          Виктория Винтаж
+                        </h4>
+                        <p className="text-sm text-foreground/60">
+                          Кимоно • Украшения • Стиль
+                        </p>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black">
+                    <Button
+                      variant="outline"
+                      className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
+                    >
                       <Icon name="Send" size={18} />
                       Открыть канал
                     </Button>
@@ -493,11 +660,18 @@ const Index = () => {
                         <div className="text-3xl">🐱</div>
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold text-foreground">Керамика и Коты</h4>
-                        <p className="text-sm text-foreground/60">Авторская керамика</p>
+                        <h4 className="text-xl font-bold text-foreground">
+                          Керамика и Коты
+                        </h4>
+                        <p className="text-sm text-foreground/60">
+                          Авторская керамика
+                        </p>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black">
+                    <Button
+                      variant="outline"
+                      className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
+                    >
                       <Icon name="Send" size={18} />
                       Открыть канал
                     </Button>
@@ -515,13 +689,23 @@ const Index = () => {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left">
               <h3 className="mb-2 text-2xl font-bold text-primary">Виктория</h3>
-              <p className="text-foreground/50">Винтажное кимоно • Керамика ручной работы 🐱</p>
+              <p className="text-foreground/50">
+                Винтажное кимоно • Керамика ручной работы 🐱
+              </p>
             </div>
             <div className="flex gap-4">
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:text-primary">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary hover:bg-primary/10 hover:text-primary"
+              >
                 <Icon name="Send" size={20} />
               </Button>
-              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:text-primary">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-primary hover:bg-primary/10 hover:text-primary"
+              >
                 <Icon name="Instagram" size={20} />
               </Button>
             </div>
