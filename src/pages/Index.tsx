@@ -23,15 +23,15 @@ const Index = () => {
     setFormData({ name: "", email: "", message: "" });
   };
 
-  const ceramicPlaceholders = [
-    { id: 1, title: "Керамическая чаша", category: "Посуда", emoji: "🐾👁️" },
-    { id: 2, title: "Коты", category: "Декор", emoji: "😺👁️" },
-    { id: 3, title: "Курительница", category: "Атрибутика", emoji: "👁️🐾" },
-    { id: 4, title: "Вазы", category: "Интерьер", emoji: "🐾😺" },
-    { id: 5, title: "Тарелки", category: "Посуда", emoji: "😸👁️" },
-    { id: 6, title: "Фигурки котов", category: "Декор", emoji: "🐱🐾" },
-    { id: 7, title: "Лингамы и Йони", category: "Атрибутика", emoji: "👁️😺" },
-    { id: 8, title: "Керамика на заказ", category: "Индивидуально", emoji: "🐾🐱" },
+  const ceramicImages = [
+    { id: 1, url: "https://cdn.poehali.dev/files/206400a3-c8a7-4f57-9567-f97c7614cf41.jpg", title: "Виктори в украшениях", category: "Портрет", emoji: "🐾👁️" },
+    { id: 2, url: "https://cdn.poehali.dev/files/07cad1a2-bb1b-4a91-9613-7c77437bdf96.jpg", title: "Кольца и чаши", category: "Коллекция", emoji: "😺👁️" },
+    { id: 3, url: "https://cdn.poehali.dev/files/0ab5a208-0624-4e38-9584-5f31704c1978.jpg", title: "Чаша с кольцом", category: "Аксессуары", emoji: "👁️🐾" },
+    { id: 4, url: "https://cdn.poehali.dev/files/85134b0c-8c48-485d-bc56-adbb8e412349.jpg", title: "Кружка с рельефом", category: "Посуда", emoji: "🐾😺" },
+    { id: 5, url: "https://cdn.poehali.dev/files/e1197dfd-1657-472d-bc8f-669342c6ff70.jpg", title: "Амулеты Лотос", category: "Атрибутика", emoji: "😸👁️" },
+    { id: 6, url: "https://cdn.poehali.dev/files/07cad1a2-bb1b-4a91-9613-7c77437bdf96.jpg", title: "Керамические украшения", category: "Декор", emoji: "🐱🐾" },
+    { id: 7, url: "https://cdn.poehali.dev/files/85134b0c-8c48-485d-bc56-adbb8e412349.jpg", title: "Ручная работа", category: "Интерьер", emoji: "👁️😺" },
+    { id: 8, url: "https://cdn.poehali.dev/files/e1197dfd-1657-472d-bc8f-669342c6ff70.jpg", title: "Керамика на заказ", category: "Индивидуально", emoji: "🐾🐱" },
   ];
 
   const kimonoImages = [
@@ -102,6 +102,9 @@ const Index = () => {
                 src="https://cdn.poehali.dev/files/c6ff79de-2fd1-4c84-b482-ffde246ff591.jpg" 
                 alt="Логотип Виктори" 
                 className="h-48 w-auto md:h-64 object-contain drop-shadow-2xl"
+                style={{
+                  filter: 'invert(1) hue-rotate(30deg) saturate(1.5) brightness(1.1)',
+                }}
               />
             </div>
             <h1 className="mb-8 text-7xl font-bold tracking-tight text-primary md:text-9xl">
@@ -295,9 +298,12 @@ const Index = () => {
               <Button
                 size="lg"
                 className="gap-2 bg-primary text-black hover:bg-primary/90"
+                asChild
               >
-                <Icon name="Send" size={20} />
-                Telegram канал
+                <a href="https://t.me/+Rikgi84QYAA5MjMy" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Send" size={20} />
+                  Telegram канал
+                </a>
               </Button>
             </div>
           </Card>
@@ -315,13 +321,6 @@ const Index = () => {
                 className="h-32 w-auto md:h-48 object-contain drop-shadow-2xl"
               />
             </div>
-            <div className="mb-4 inline-flex items-center gap-3 text-7xl">
-              <span>🐱</span>
-              <span>👁️</span>
-              <span>🐾</span>
-              <span>😺</span>
-              <span>👁️</span>
-            </div>
             <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
               Керамика ручной работы
             </h2>
@@ -331,33 +330,25 @@ const Index = () => {
           </div>
 
           <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {ceramicPlaceholders.map((item, idx) => (
+            {ceramicImages.map((item, idx) => (
               <Card
                 key={item.id}
                 className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
-                <div className="relative aspect-square overflow-hidden bg-muted/30">
-                  <div className="flex h-full items-center justify-center">
-                    <div className="text-center">
-                      <div className="mb-3 text-5xl">{item.emoji}</div>
-                      <Icon
-                        name="Image"
-                        size={48}
-                        className="mx-auto mb-3 text-primary/30"
-                      />
-                      <p className="text-xs text-foreground/50">
-                        Загрузите фото
-                      </p>
-                    </div>
-                  </div>
+                <div className="relative aspect-square overflow-hidden bg-black">
+                  <img 
+                    src={item.url} 
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
                   <div className="absolute right-3 top-3">
                     <span className="rounded-full border border-primary/30 bg-black/60 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
                       {item.category}
                     </span>
                   </div>
-                  <div className="absolute left-3 top-3">
-                    <div className="text-3xl">{item.emoji}</div>
+                  <div className="absolute left-3 top-3 flex gap-2">
+                    <div className="text-3xl drop-shadow-lg">{item.emoji}</div>
                   </div>
                 </div>
                 <div className="p-6">
