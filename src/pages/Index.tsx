@@ -97,10 +97,12 @@ const Index = () => {
 
         <div className="container relative mx-auto px-4 py-20 text-center animate-fade-in">
           <div className="mx-auto max-w-4xl">
-            <div className="mb-6 flex items-center justify-center gap-4 text-6xl">
-              <span>👁️</span>
-              <span>🐱</span>
-              <span>🐾</span>
+            <div className="mb-8 flex items-center justify-center">
+              <img 
+                src="https://cdn.poehali.dev/files/c6ff79de-2fd1-4c84-b482-ffde246ff591.jpg" 
+                alt="Логотип Виктори" 
+                className="h-48 w-auto md:h-64 object-contain drop-shadow-2xl"
+              />
             </div>
             <h1 className="mb-8 text-7xl font-bold tracking-tight text-primary md:text-9xl">
               Виктори
@@ -119,9 +121,12 @@ const Index = () => {
               <Button
                 size="lg"
                 className="gap-2 border-primary bg-primary text-black hover:bg-primary/90"
+                asChild
               >
-                <Icon name="Send" size={20} />
-                Telegram
+                <a href="https://t.me/viktenvv" target="_blank" rel="noopener noreferrer">
+                  <Icon name="Send" size={20} />
+                  Telegram
+                </a>
               </Button>
               <Button
                 size="lg"
@@ -303,6 +308,13 @@ const Index = () => {
       <section className="py-32 bg-gradient-to-b from-background to-black">
         <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
+            <div className="mb-8 flex items-center justify-center">
+              <img 
+                src="https://cdn.poehali.dev/files/82242942-c57f-4bbb-96cc-4b4d0cfef384.jpg" 
+                alt="Виктори Керамика" 
+                className="h-32 w-auto md:h-48 object-contain drop-shadow-2xl"
+              />
+            </div>
             <div className="mb-4 inline-flex items-center gap-3 text-7xl">
               <span>🐱</span>
               <span>👁️</span>
@@ -636,8 +648,7 @@ const Index = () => {
                     className="border-primary/30 bg-background/50"
                   />
                   <Input
-                    type="email"
-                    placeholder="Email"
+                    placeholder="Телефон или Telegram"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
@@ -678,7 +689,7 @@ const Index = () => {
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-foreground">
-                          Виктория Винтаж
+                          Виктори Винтаж
                         </h4>
                         <p className="text-sm text-foreground/60">
                           Кимоно • Украшения • Стиль
@@ -688,9 +699,12 @@ const Index = () => {
                     <Button
                       variant="outline"
                       className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
+                      asChild
                     >
-                      <Icon name="Send" size={18} />
-                      Открыть канал
+                      <a href="https://t.me/+Rikgi84QYAA5MjMy" target="_blank" rel="noopener noreferrer">
+                        <Icon name="Send" size={18} />
+                        Открыть канал
+                      </a>
                     </Button>
                   </div>
                 </Card>
@@ -703,7 +717,7 @@ const Index = () => {
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-foreground">
-                          Керамика и Коты
+                          Виктори Керамика и Коты
                         </h4>
                         <p className="text-sm text-foreground/60">
                           Авторская керамика
@@ -713,9 +727,12 @@ const Index = () => {
                     <Button
                       variant="outline"
                       className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
+                      asChild
                     >
-                      <Icon name="Send" size={18} />
-                      Открыть канал
+                      <a href="https://t.me/+xV_lPPuG9t9iNDAy" target="_blank" rel="noopener noreferrer">
+                        <Icon name="Send" size={18} />
+                        Открыть канал
+                      </a>
                     </Button>
                   </div>
                 </Card>
