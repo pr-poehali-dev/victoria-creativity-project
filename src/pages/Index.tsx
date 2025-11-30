@@ -24,21 +24,23 @@ const Index = () => {
   };
 
   const ceramicPlaceholders = [
-    { id: 1, title: "Керамическая чаша", category: "Посуда", emoji: "🐾" },
-    { id: 2, title: "Коты", category: "Декор", emoji: "😺" },
-    { id: 3, title: "Курительница", category: "Атрибутика", emoji: "👁️" },
-    { id: 4, title: "Вазы", category: "Интерьер", emoji: "🐾" },
-    { id: 5, title: "Тарелки", category: "Посуда", emoji: "😸" },
-    { id: 6, title: "Фигурки котов", category: "Декор", emoji: "🐱" },
+    { id: 1, title: "Керамическая чаша", category: "Посуда", emoji: "🐾👁️" },
+    { id: 2, title: "Коты", category: "Декор", emoji: "😺👁️" },
+    { id: 3, title: "Курительница", category: "Атрибутика", emoji: "👁️🐾" },
+    { id: 4, title: "Вазы", category: "Интерьер", emoji: "🐾😺" },
+    { id: 5, title: "Тарелки", category: "Посуда", emoji: "😸👁️" },
+    { id: 6, title: "Фигурки котов", category: "Декор", emoji: "🐱🐾" },
+    { id: 7, title: "Лингамы и Йони", category: "Атрибутика", emoji: "👁️😺" },
+    { id: 8, title: "Керамика на заказ", category: "Индивидуально", emoji: "🐾🐱" },
   ];
 
-  const kimonoPlaceholders = [
-    { id: 1, title: "Винтажное кимоно", emoji: "👁️" },
-    { id: 2, title: "Шёлковое кимоно", emoji: "🐾" },
-    { id: 3, title: "Коллекционное кимоно", emoji: "😺" },
-    { id: 4, title: "Японское кимоно", emoji: "👁️" },
-    { id: 5, title: "Европейское кимоно", emoji: "🐾" },
-    { id: 6, title: "Редкое кимоно", emoji: "😺" },
+  const kimonoImages = [
+    { id: 1, url: "https://cdn.poehali.dev/files/884715c3-f32f-4b8e-9691-060aec74f7cb.jpg", title: "Розовое кимоно", emoji: "👁️" },
+    { id: 2, url: "https://cdn.poehali.dev/files/f7a66f39-ce33-463a-a9ca-3b074e77e145.jpg", title: "Золотое кимоно", emoji: "🐾" },
+    { id: 3, url: "https://cdn.poehali.dev/files/904e9546-3bed-4571-83c0-94f167df9628.jpg", title: "Цветочное кимоно", emoji: "😺" },
+    { id: 4, url: "https://cdn.poehali.dev/files/4cca17a4-2ed9-44ea-9b83-e9cdf845c1a1.jpg", title: "Золотое кимоно с подругой", emoji: "👁️" },
+    { id: 5, url: "https://cdn.poehali.dev/files/21584c70-4d33-40fa-a069-fbfa69786bc1.jpg", title: "Розово-серое кимоно", emoji: "🐾" },
+    { id: 6, url: "https://cdn.poehali.dev/files/884715c3-f32f-4b8e-9691-060aec74f7cb.jpg", title: "Коллекционное кимоно", emoji: "😺" },
   ];
 
   const videoLinks = [
@@ -95,9 +97,13 @@ const Index = () => {
 
         <div className="container relative mx-auto px-4 py-20 text-center animate-fade-in">
           <div className="mx-auto max-w-4xl">
-            <div className="mb-6 text-6xl">🐱</div>
+            <div className="mb-6 flex items-center justify-center gap-4 text-6xl">
+              <span>👁️</span>
+              <span>🐱</span>
+              <span>🐾</span>
+            </div>
             <h1 className="mb-8 text-7xl font-bold tracking-tight text-primary md:text-9xl">
-              Виктория
+              Виктори
             </h1>
             <div className="mb-8 space-y-4 text-xl text-foreground/90 md:text-2xl">
               <p className="font-light italic">
@@ -211,7 +217,12 @@ const Index = () => {
       <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
-            <div className="mb-4 inline-block text-6xl">👘</div>
+            <div className="mb-4 inline-flex items-center gap-3 text-6xl">
+              <span>👘</span>
+              <span>👁️</span>
+              <span>🐾</span>
+              <span>😺</span>
+            </div>
             <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
               Коллекционные кимоно
             </h2>
@@ -222,34 +233,31 @@ const Index = () => {
           </div>
 
           <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {kimonoPlaceholders.map((item, idx) => (
+            {kimonoImages.map((item, idx) => (
               <Card
                 key={item.id}
                 className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
                 style={{ animationDelay: `${idx * 150}ms` }}
               >
-                <div className="relative aspect-[3/4] overflow-hidden bg-muted/30">
-                  <div className="flex h-full items-center justify-center">
-                    <div className="text-center">
-                      <div className="mb-4 text-6xl">{item.emoji}</div>
-                      <Icon
-                        name="Image"
-                        size={64}
-                        className="mx-auto mb-4 text-primary/30"
-                      />
-                      <p className="text-sm text-foreground/50">
-                        Загрузите фото
-                      </p>
-                    </div>
+                <div className="relative aspect-[3/4] overflow-hidden bg-black">
+                  <img 
+                    src={item.url} 
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute right-3 top-3 flex gap-2">
+                    <div className="text-4xl drop-shadow-lg">{item.emoji}</div>
+                    <div className="text-4xl drop-shadow-lg">👁️</div>
                   </div>
-                  <div className="absolute right-3 top-3">
-                    <div className="text-4xl">{item.emoji}</div>
+                  <div className="absolute left-3 top-3 flex gap-2">
+                    <div className="text-4xl drop-shadow-lg">🐾</div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
                 <div className="p-6">
                   <div className="mb-2 flex items-center gap-2">
                     <span className="text-2xl">{item.emoji}</span>
+                    <span className="text-2xl">👁️</span>
                     <h3 className="text-xl font-semibold text-foreground">
                       {item.title}
                     </h3>
@@ -295,7 +303,13 @@ const Index = () => {
       <section className="py-32 bg-gradient-to-b from-background to-black">
         <div className="container mx-auto px-4">
           <div className="mb-16 text-center">
-            <div className="mb-4 text-7xl">🐱</div>
+            <div className="mb-4 inline-flex items-center gap-3 text-7xl">
+              <span>🐱</span>
+              <span>👁️</span>
+              <span>🐾</span>
+              <span>😺</span>
+              <span>👁️</span>
+            </div>
             <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
               Керамика ручной работы
             </h2>
