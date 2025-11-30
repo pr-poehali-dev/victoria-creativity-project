@@ -13,85 +13,156 @@ const Index = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Сообщение отправлено!",
-      description: "Виктория свяжется с вами в ближайшее время.",
+      title: "Сообщение отправлено",
+      description: "Виктория свяжется с вами в ближайшее время",
     });
     setFormData({ name: '', email: '', message: '' });
   };
 
-  const kimonoItems = [
-    { id: 1, title: 'Винтажное кимоно с цветочным принтом', price: 'По запросу', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/139a7435-8658-4e7e-9d1e-0b61b0668bd3.jpg' },
-    { id: 2, title: 'Шёлковое кимоно с традиционным узором', price: 'По запросу', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/139a7435-8658-4e7e-9d1e-0b61b0668bd3.jpg' },
-    { id: 3, title: 'Редкое винтажное кимоно из Киото', price: 'По запросу', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/139a7435-8658-4e7e-9d1e-0b61b0668bd3.jpg' },
+  const ceramicPlaceholders = [
+    { id: 1, title: 'Керамическая чаша', category: 'Посуда' },
+    { id: 2, title: 'Коты', category: 'Декор' },
+    { id: 3, title: 'Курительница', category: 'Атрибутика' },
+    { id: 4, title: 'Вазы', category: 'Интерьер' },
   ];
 
-  const ceramicItems = [
-    { id: 1, title: 'Керамическая чаша ручной работы', category: 'Посуда', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/4c93184c-d824-499b-8868-1fd114d27fab.jpg' },
-    { id: 2, title: 'Коты - керамические фигурки', category: 'Декор', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/7a8bc561-d630-4c8f-b0b6-5200b5f74eb2.jpg' },
-    { id: 3, title: 'Шаманская курительница', category: 'Атрибутика', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/4c93184c-d824-499b-8868-1fd114d27fab.jpg' },
-    { id: 4, title: 'Керамические вазы', category: 'Интерьер', img: 'https://cdn.poehali.dev/projects/4dc70d72-6943-4645-b9b1-7f1eb83c11a3/files/4c93184c-d824-499b-8868-1fd114d27fab.jpg' },
+  const kimonoPlaceholders = [
+    { id: 1, title: 'Винтажное кимоно' },
+    { id: 2, title: 'Шёлковое кимоно' },
+    { id: 3, title: 'Коллекционное кимоно' },
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-secondary via-primary/20 to-accent/20 text-white">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjA1IiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz48L3N2Zz4=')] opacity-50"></div>
-        <div className="container relative mx-auto px-4 py-20 md:py-32">
-          <div className="mx-auto max-w-4xl text-center animate-fade-in">
-            <div className="mb-6 inline-block rounded-full bg-white/10 px-4 py-2 text-sm font-medium backdrop-blur-sm">
-              Винтажное кимоно • Керамика ручной работы 🐱
-            </div>
-            <h1 className="mb-6 text-5xl font-bold tracking-tight md:text-7xl">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-background to-black opacity-60" />
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(201, 169, 97, 0.05) 0%, transparent 50%)',
+        }} />
+        
+        <div className="container relative mx-auto px-4 py-20 text-center animate-fade-in">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-6 text-6xl">🐱</div>
+            <h1 className="mb-8 text-7xl font-bold tracking-tight text-primary md:text-9xl">
               Виктория
             </h1>
-            <p className="mb-8 text-xl text-white/90 md:text-2xl">
-              Эксклюзивные винтажные кимоно из Японии и Европы
-              <br />
-              Уникальная керамика ручной работы
-            </p>
+            <div className="mb-8 space-y-4 text-xl text-foreground/90 md:text-2xl">
+              <p className="font-light italic">
+                Человек с безупречным чувством вкуса
+              </p>
+              <p className="text-lg text-foreground/70">
+                Винтажные коллекционные кимоно из Японии и Европы
+                <br />
+                Уникальная керамика ручной работы
+              </p>
+            </div>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button size="lg" className="gap-2 bg-white text-secondary hover:bg-white/90">
+              <Button size="lg" className="gap-2 border-primary bg-primary text-black hover:bg-primary/90">
                 <Icon name="Send" size={20} />
-                Написать в Telegram
+                Telegram
               </Button>
-              <Button size="lg" variant="outline" className="gap-2 border-white bg-white/10 text-white backdrop-blur-sm hover:bg-white/20">
-                <Icon name="Eye" size={20} />
-                Смотреть каталог
+              <Button size="lg" variant="outline" className="gap-2 border-primary/50 text-primary hover:bg-primary/10">
+                <Icon name="Instagram" size={20} />
+                Instagram
               </Button>
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <Icon name="ChevronDown" size={32} className="text-primary/50" />
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="relative py-32 bg-gradient-to-b from-black to-background">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl space-y-12 text-center animate-fade-in">
+            <div className="inline-block rounded-full border-2 border-primary/30 px-6 py-2 text-sm font-medium text-primary">
+              Стилист по кимоно
+            </div>
+            
+            <h2 className="text-5xl font-bold text-primary md:text-6xl">
+              Научу носить кимоно модно
+            </h2>
+            
+            <div className="space-y-6 text-lg leading-relaxed text-foreground/80">
+              <p className="text-2xl font-light text-primary/90">
+                Виктория — это человек с безупречным чувством вкуса, 
+                который научит вас носить коллекционные кимоно в повседневной жизни.
+              </p>
+              <p>
+                Каждое кимоно в моей коллекции тщательно отобрано на аукционах Японии и Европы. 
+                Это не просто одежда — это произведения искусства с богатой историей, 
+                которые можно носить каждый день, создавая уникальные образы.
+              </p>
+              <p>
+                Я помогу вам подобрать идеальное винтажное кимоно и покажу, 
+                как интегрировать его в современный гардероб, сохраняя элегантность и стиль.
+              </p>
+            </div>
+
+            <div className="grid gap-6 pt-12 md:grid-cols-3">
+              <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
+                <div className="mb-4 text-4xl">👘</div>
+                <h3 className="mb-3 text-xl font-semibold text-primary">Винтажные кимоно</h3>
+                <p className="text-sm text-foreground/70">
+                  Эксклюзивная коллекция аутентичных японских и европейских кимоно
+                </p>
+              </Card>
+              <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
+                <div className="mb-4 text-4xl">✨</div>
+                <h3 className="mb-3 text-xl font-semibold text-primary">Стилизация</h3>
+                <p className="text-sm text-foreground/70">
+                  Индивидуальный подход к созданию современных образов с кимоно
+                </p>
+              </Card>
+              <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
+                <div className="mb-4 text-4xl">🐱</div>
+                <h3 className="mb-3 text-xl font-semibold text-primary">Керамика</h3>
+                <p className="text-sm text-foreground/70">
+                  Уникальные изделия ручной работы с душой и любовью к котам
+                </p>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Kimono Section */}
-      <section id="kimono" className="py-20 bg-muted/30">
+      {/* Kimono Gallery */}
+      <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center animate-fade-in">
-            <h2 className="mb-4 text-4xl font-bold text-secondary md:text-5xl">
-              Винтажное кимоно
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-block text-6xl">👘</div>
+            <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
+              Коллекционные кимоно
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Эксклюзивная коллекция винтажных кимоно, собранных на аукционах Японии и Европы. 
-              Каждое изделие — уникальное произведение искусства с богатой историей.
+            <p className="mx-auto max-w-2xl text-lg text-foreground/70">
+              Каждое кимоно — это история, рассказанная через шелк и традиционные узоры
             </p>
           </div>
 
-          <div className="mb-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {kimonoItems.map((item, idx) => (
-              <Card key={item.id} className="group overflow-hidden transition-all hover:shadow-xl animate-scale-in" style={{ animationDelay: `${idx * 100}ms` }}>
-                <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-                  <img 
-                    src={item.img} 
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+          <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {kimonoPlaceholders.map((item, idx) => (
+              <Card 
+                key={item.id} 
+                className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
+                style={{ animationDelay: `${idx * 150}ms` }}
+              >
+                <div className="relative aspect-[3/4] overflow-hidden bg-muted/30">
+                  <div className="flex h-full items-center justify-center">
+                    <div className="text-center">
+                      <Icon name="Image" size={64} className="mx-auto mb-4 text-primary/30" />
+                      <p className="text-sm text-foreground/50">Загрузите ваше фото кимоно</p>
+                    </div>
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                  <p className="mb-4 text-primary font-medium">{item.price}</p>
-                  <Button className="w-full gap-2">
+                  <h3 className="mb-4 text-xl font-semibold text-foreground">{item.title}</h3>
+                  <p className="mb-4 text-sm text-primary">По запросу</p>
+                  <Button className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black" variant="outline">
                     <Icon name="MessageCircle" size={18} />
                     Узнать подробнее
                   </Button>
@@ -100,84 +171,60 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 p-8 md:p-12">
-            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+          <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 p-12 backdrop-blur-sm">
+            <div className="flex flex-col items-center gap-6 text-center md:flex-row md:text-left">
               <div className="flex-1">
-                <h3 className="mb-3 text-2xl font-bold">Новые поступления каждую неделю</h3>
-                <p className="text-muted-foreground">
+                <h3 className="mb-4 text-3xl font-bold text-primary">Новые поступления еженедельно</h3>
+                <p className="text-foreground/70">
                   Подписывайтесь на Telegram-канал, чтобы первыми узнавать о новых винтажных кимоно, 
-                  украшениях и аксессуарах из Японии и Европы.
+                  украшениях и аксессуарах. Консультации по стилизации и подбору образов.
                 </p>
               </div>
-              <Button size="lg" className="gap-2 bg-primary hover:bg-primary/90">
+              <Button size="lg" className="gap-2 bg-primary text-black hover:bg-primary/90">
                 <Icon name="Send" size={20} />
                 Telegram канал
               </Button>
             </div>
-          </div>
+          </Card>
         </div>
       </section>
 
-      {/* Video Section */}
-      <section className="py-20 bg-background">
+      {/* Ceramic Gallery */}
+      <section className="py-32 bg-gradient-to-b from-background to-black">
         <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-4xl font-bold text-secondary md:text-5xl">
-              Видео о кимоно
-            </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Смотрите видеообзоры коллекции, истории создания и особенности каждого изделия
-            </p>
-          </div>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="group relative aspect-video overflow-hidden rounded-xl bg-muted cursor-pointer transition-transform hover:scale-105">
-                <div className="flex h-full items-center justify-center">
-                  <div className="rounded-full bg-white/90 p-6 transition-all group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                    <Icon name="Play" size={32} />
-                  </div>
-                </div>
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                  <p className="text-sm font-medium text-white">Видео #{item}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ceramic Section */}
-      <section id="ceramic" className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center animate-fade-in">
-            <div className="mb-4 text-6xl">🐱</div>
-            <h2 className="mb-4 text-4xl font-bold text-secondary md:text-5xl">
+          <div className="mb-16 text-center">
+            <div className="mb-4 text-7xl">🐱</div>
+            <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
               Керамика ручной работы
             </h2>
-            <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              Уникальные предметы интерьера, шаманская атрибутика, посуда и декор. 
-              Каждое изделие создаётся вручную с душой и любовью к котам 🐾
+            <p className="mx-auto max-w-2xl text-lg text-foreground/70">
+              Каждое изделие создаётся вручную с душой и любовью к котам
             </p>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {ceramicItems.map((item, idx) => (
-              <Card key={item.id} className="group overflow-hidden transition-all hover:shadow-xl animate-scale-in" style={{ animationDelay: `${idx * 100}ms` }}>
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <img 
-                    src={item.img} 
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
+          <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {ceramicPlaceholders.map((item, idx) => (
+              <Card 
+                key={item.id} 
+                className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
+                style={{ animationDelay: `${idx * 150}ms` }}
+              >
+                <div className="relative aspect-square overflow-hidden bg-muted/30">
+                  <div className="flex h-full items-center justify-center">
+                    <div className="text-center">
+                      <Icon name="Image" size={48} className="mx-auto mb-3 text-primary/30" />
+                      <p className="text-xs text-foreground/50">Загрузите фото керамики</p>
+                    </div>
+                  </div>
                   <div className="absolute right-3 top-3">
-                    <span className="rounded-full bg-accent/90 px-3 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                    <span className="rounded-full border border-primary/30 bg-black/60 px-3 py-1 text-xs font-medium text-primary backdrop-blur-sm">
                       {item.category}
                     </span>
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-4 text-lg font-semibold">{item.title}</h3>
-                  <Button variant="outline" className="w-full gap-2">
+                  <h3 className="mb-4 text-lg font-semibold text-foreground">{item.title}</h3>
+                  <Button variant="outline" className="w-full gap-2 border-primary/50 text-primary hover:bg-primary hover:text-black">
                     <Icon name="MessageCircle" size={18} />
                     Заказать
                   </Button>
@@ -186,15 +233,15 @@ const Index = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Card className="inline-block p-8">
-              <div className="mb-4 text-5xl">✨</div>
-              <h3 className="mb-3 text-2xl font-bold">Работаю на заказ</h3>
-              <p className="mb-6 max-w-md text-muted-foreground">
+          <div className="text-center">
+            <Card className="inline-block border-primary/30 bg-card/50 p-12 backdrop-blur-sm">
+              <div className="mb-6 text-6xl">✨</div>
+              <h3 className="mb-4 text-3xl font-bold text-primary">Работаю на заказ</h3>
+              <p className="mb-8 max-w-lg text-foreground/70">
                 Создаю уникальные керамические изделия по вашим пожеланиям: 
                 чаши, вазы, тарелки, курительницы, лингамы и йони, фигурки котов
               </p>
-              <Button className="gap-2">
+              <Button size="lg" className="gap-2 bg-primary text-black hover:bg-primary/90">
                 <Icon name="Sparkles" size={18} />
                 Обсудить заказ
               </Button>
@@ -203,50 +250,115 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 bg-background">
+      {/* Instructions Section */}
+      <section className="py-32 bg-background">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <div className="mb-12 text-center">
-              <h2 className="mb-4 text-4xl font-bold text-secondary md:text-5xl">
+              <Icon name="HelpCircle" size={48} className="mx-auto mb-4 text-primary" />
+              <h2 className="mb-6 text-4xl font-bold text-primary md:text-5xl">
+                Как загрузить свои фотографии
+              </h2>
+            </div>
+
+            <Card className="border-primary/30 bg-card/50 p-8 backdrop-blur-sm md:p-12">
+              <div className="space-y-8">
+                <div className="flex gap-6">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-xl font-bold text-primary">
+                    1
+                  </div>
+                  <div>
+                    <h3 className="mb-2 text-xl font-semibold text-foreground">Откройте редактор</h3>
+                    <p className="text-foreground/70">
+                      В редакторе poehali.dev наведите курсор на изображение с иконкой Image и нажмите на него
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-xl font-bold text-primary">
+                    2
+                  </div>
+                  <div>
+                    <h3 className="mb-2 text-xl font-semibold text-foreground">Загрузите фото</h3>
+                    <p className="text-foreground/70">
+                      Появится окно загрузки. Выберите ваши фотографии керамики или кимоно с компьютера
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-6">
+                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border-2 border-primary bg-primary/10 text-xl font-bold text-primary">
+                    3
+                  </div>
+                  <div>
+                    <h3 className="mb-2 text-xl font-semibold text-foreground">Готово!</h3>
+                    <p className="text-foreground/70">
+                      Фотографии автоматически заменят заглушки. Вы можете загружать сколько угодно изображений
+                    </p>
+                  </div>
+                </div>
+
+                <div className="rounded-lg border border-primary/20 bg-primary/5 p-6">
+                  <div className="flex gap-3">
+                    <Icon name="Lightbulb" size={24} className="shrink-0 text-primary" />
+                    <div>
+                      <p className="font-semibold text-primary">Совет:</p>
+                      <p className="text-sm text-foreground/70">
+                        Используйте качественные фотографии с хорошим освещением. 
+                        Для кимоно лучше всего подходят фото на нейтральном фоне, 
+                        для керамики — крупный план изделия
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="py-32 bg-gradient-to-b from-background to-black">
+        <div className="container mx-auto px-4">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-12 text-center">
+              <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
                 Свяжитесь со мной
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Напишите мне или подпишитесь на мои Telegram-каналы
+              <p className="text-lg text-foreground/70">
+                Напишите или подпишитесь на мои каналы
               </p>
             </div>
 
             <div className="grid gap-8 lg:grid-cols-2">
-              <Card className="p-8">
-                <h3 className="mb-6 text-2xl font-bold">Отправить сообщение</h3>
+              <Card className="border-primary/30 bg-card/50 p-8 backdrop-blur-sm">
+                <h3 className="mb-6 text-2xl font-bold text-foreground">Отправить сообщение</h3>
                 <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Input
-                      placeholder="Ваше имя"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Input
-                      type="email"
-                      placeholder="Email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Textarea
-                      placeholder="Ваше сообщение"
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      required
-                      rows={5}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full gap-2">
+                  <Input
+                    placeholder="Ваше имя"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="border-primary/30 bg-background/50"
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    required
+                    className="border-primary/30 bg-background/50"
+                  />
+                  <Textarea
+                    placeholder="Ваше сообщение"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    required
+                    rows={5}
+                    className="border-primary/30 bg-background/50"
+                  />
+                  <Button type="submit" className="w-full gap-2 bg-primary text-black hover:bg-primary/90">
                     <Icon name="Send" size={18} />
                     Отправить
                   </Button>
@@ -254,52 +366,40 @@ const Index = () => {
               </Card>
 
               <div className="space-y-6">
-                <Card className="group cursor-pointer overflow-hidden transition-all hover:shadow-xl">
-                  <div className="bg-gradient-to-br from-primary to-primary/80 p-8 text-white">
-                    <div className="mb-4 flex items-center gap-4">
-                      <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm">
-                        <Icon name="ShoppingBag" size={28} />
+                <Card className="group cursor-pointer overflow-hidden border-primary/30 transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                  <div className="bg-gradient-to-br from-primary/20 to-primary/10 p-8">
+                    <div className="mb-6 flex items-center gap-4">
+                      <div className="rounded-full border-2 border-primary/30 bg-black/40 p-4 backdrop-blur-sm">
+                        <Icon name="ShoppingBag" size={28} className="text-primary" />
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold">Виктория Винтаж</h4>
-                        <p className="text-sm text-white/80">Кимоно • Украшения • Аксессуары</p>
+                        <h4 className="text-xl font-bold text-foreground">Виктория Винтаж</h4>
+                        <p className="text-sm text-foreground/60">Кимоно • Украшения • Стиль</p>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full gap-2 border-white bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-primary">
+                    <Button variant="outline" className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black">
                       <Icon name="Send" size={18} />
                       Открыть канал
                     </Button>
                   </div>
                 </Card>
 
-                <Card className="group cursor-pointer overflow-hidden transition-all hover:shadow-xl">
-                  <div className="bg-gradient-to-br from-accent to-accent/80 p-8 text-white">
-                    <div className="mb-4 flex items-center gap-4">
-                      <div className="rounded-full bg-white/20 p-4 backdrop-blur-sm">
+                <Card className="group cursor-pointer overflow-hidden border-primary/30 transition-all hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                  <div className="bg-gradient-to-br from-accent/20 to-accent/10 p-8">
+                    <div className="mb-6 flex items-center gap-4">
+                      <div className="rounded-full border-2 border-primary/30 bg-black/40 p-4 backdrop-blur-sm">
                         <div className="text-3xl">🐱</div>
                       </div>
                       <div>
-                        <h4 className="text-xl font-bold">Виктория Керамика Коты</h4>
-                        <p className="text-sm text-white/80">Керамика ручной работы</p>
+                        <h4 className="text-xl font-bold text-foreground">Керамика и Коты</h4>
+                        <p className="text-sm text-foreground/60">Авторская керамика</p>
                       </div>
                     </div>
-                    <Button variant="outline" className="w-full gap-2 border-white bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-accent">
+                    <Button variant="outline" className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black">
                       <Icon name="Send" size={18} />
                       Открыть канал
                     </Button>
                   </div>
-                </Card>
-
-                <Card className="bg-gradient-to-br from-secondary/5 to-primary/5 p-6">
-                  <div className="mb-4 flex items-center gap-3">
-                    <Icon name="Bell" size={24} className="text-primary" />
-                    <h4 className="font-semibold">Новости и анонсы</h4>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                    Следите за новыми поступлениями винтажных кимоно, 
-                    эксклюзивными керамическими работами и специальными предложениями 
-                    в моих Telegram-каналах!
-                  </p>
                 </Card>
               </div>
             </div>
@@ -308,23 +408,23 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-secondary py-12 text-white">
+      <footer className="border-t border-primary/20 bg-black py-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
             <div className="text-center md:text-left">
-              <h3 className="mb-2 text-2xl font-bold">Виктория</h3>
-              <p className="text-white/70">Винтажное кимоно • Керамика ручной работы 🐱</p>
+              <h3 className="mb-2 text-2xl font-bold text-primary">Виктория</h3>
+              <p className="text-foreground/50">Винтажное кимоно • Керамика ручной работы 🐱</p>
             </div>
             <div className="flex gap-4">
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:text-primary">
                 <Icon name="Send" size={20} />
               </Button>
-              <Button variant="ghost" size="icon" className="text-white hover:bg-white/10 hover:text-white">
+              <Button variant="ghost" size="icon" className="text-primary hover:bg-primary/10 hover:text-primary">
                 <Icon name="Instagram" size={20} />
               </Button>
             </div>
           </div>
-          <div className="mt-8 border-t border-white/10 pt-8 text-center text-sm text-white/60">
+          <div className="mt-8 border-t border-primary/10 pt-8 text-center text-sm text-foreground/40">
             <p>© 2024 Виктория. Все права защищены.</p>
           </div>
         </div>
