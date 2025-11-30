@@ -24,16 +24,21 @@ const Index = () => {
   };
 
   const ceramicPlaceholders = [
-    { id: 1, title: "Керамическая чаша", category: "Посуда" },
-    { id: 2, title: "Коты", category: "Декор" },
-    { id: 3, title: "Курительница", category: "Атрибутика" },
-    { id: 4, title: "Вазы", category: "Интерьер" },
+    { id: 1, title: "Керамическая чаша", category: "Посуда", emoji: "🐾" },
+    { id: 2, title: "Коты", category: "Декор", emoji: "😺" },
+    { id: 3, title: "Курительница", category: "Атрибутика", emoji: "👁️" },
+    { id: 4, title: "Вазы", category: "Интерьер", emoji: "🐾" },
+    { id: 5, title: "Тарелки", category: "Посуда", emoji: "😸" },
+    { id: 6, title: "Фигурки котов", category: "Декор", emoji: "🐱" },
   ];
 
   const kimonoPlaceholders = [
-    { id: 1, title: "Винтажное кимоно" },
-    { id: 2, title: "Шёлковое кимоно" },
-    { id: 3, title: "Коллекционное кимоно" },
+    { id: 1, title: "Винтажное кимоно", emoji: "👁️" },
+    { id: 2, title: "Шёлковое кимоно", emoji: "🐾" },
+    { id: 3, title: "Коллекционное кимоно", emoji: "😺" },
+    { id: 4, title: "Японское кимоно", emoji: "👁️" },
+    { id: 5, title: "Европейское кимоно", emoji: "🐾" },
+    { id: 6, title: "Редкое кимоно", emoji: "😺" },
   ];
 
   const videoLinks = [
@@ -161,7 +166,10 @@ const Index = () => {
 
             <div className="grid gap-6 pt-12 md:grid-cols-3">
               <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
-                <div className="mb-4 text-4xl">👘</div>
+                <div className="mb-4 flex items-center justify-center gap-3 text-4xl">
+                  <span>👘</span>
+                  <span>👁️</span>
+                </div>
                 <h3 className="mb-3 text-xl font-semibold text-primary">
                   Винтажные кимоно
                 </h3>
@@ -171,7 +179,10 @@ const Index = () => {
                 </p>
               </Card>
               <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
-                <div className="mb-4 text-4xl">✨</div>
+                <div className="mb-4 flex items-center justify-center gap-3 text-4xl">
+                  <span>✨</span>
+                  <span>🐾</span>
+                </div>
                 <h3 className="mb-3 text-xl font-semibold text-primary">
                   Стилизация
                 </h3>
@@ -180,7 +191,10 @@ const Index = () => {
                 </p>
               </Card>
               <Card className="border-primary/20 bg-card/50 p-8 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-xl hover:shadow-primary/5">
-                <div className="mb-4 text-4xl">🐱</div>
+                <div className="mb-4 flex items-center justify-center gap-3 text-4xl">
+                  <span>🐱</span>
+                  <span>😺</span>
+                </div>
                 <h3 className="mb-3 text-xl font-semibold text-primary">
                   Керамика
                 </h3>
@@ -217,22 +231,29 @@ const Index = () => {
                 <div className="relative aspect-[3/4] overflow-hidden bg-muted/30">
                   <div className="flex h-full items-center justify-center">
                     <div className="text-center">
+                      <div className="mb-4 text-6xl">{item.emoji}</div>
                       <Icon
                         name="Image"
                         size={64}
                         className="mx-auto mb-4 text-primary/30"
                       />
                       <p className="text-sm text-foreground/50">
-                        Загрузите ваше фото кимоно
+                        Загрузите фото
                       </p>
                     </div>
+                  </div>
+                  <div className="absolute right-3 top-3">
+                    <div className="text-4xl">{item.emoji}</div>
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-4 text-xl font-semibold text-foreground">
-                    {item.title}
-                  </h3>
+                  <div className="mb-2 flex items-center gap-2">
+                    <span className="text-2xl">{item.emoji}</span>
+                    <h3 className="text-xl font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                  </div>
                   <p className="mb-4 text-sm text-primary">По запросу</p>
                   <Button
                     className="w-full gap-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-black"
@@ -293,13 +314,14 @@ const Index = () => {
                 <div className="relative aspect-square overflow-hidden bg-muted/30">
                   <div className="flex h-full items-center justify-center">
                     <div className="text-center">
+                      <div className="mb-3 text-5xl">{item.emoji}</div>
                       <Icon
                         name="Image"
                         size={48}
                         className="mx-auto mb-3 text-primary/30"
                       />
                       <p className="text-xs text-foreground/50">
-                        Загрузите фото керамики
+                        Загрузите фото
                       </p>
                     </div>
                   </div>
@@ -308,11 +330,17 @@ const Index = () => {
                       {item.category}
                     </span>
                   </div>
+                  <div className="absolute left-3 top-3">
+                    <div className="text-3xl">{item.emoji}</div>
+                  </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-4 text-lg font-semibold text-foreground">
-                    {item.title}
-                  </h3>
+                  <div className="mb-4 flex items-center gap-2">
+                    <span className="text-xl">{item.emoji}</span>
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {item.title}
+                    </h3>
+                  </div>
                   <Button
                     variant="outline"
                     className="w-full gap-2 border-primary/50 text-primary hover:bg-primary hover:text-black"
