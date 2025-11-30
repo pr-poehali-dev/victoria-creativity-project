@@ -32,6 +32,23 @@ const Index = () => {
     { id: 3, title: 'Коллекционное кимоно' },
   ];
 
+  const videoLinks = [
+    { id: 1, url: '', title: 'Видео обзор кимоно #1', description: 'История и особенности коллекционного кимоно' },
+    { id: 2, url: '', title: 'Видео обзор кимоно #2', description: 'Как носить винтажное кимоно в повседневной жизни' },
+    { id: 3, url: '', title: 'Видео обзор кимоно #3', description: 'Процесс создания керамики ручной работы' },
+  ];
+
+  const getVideoId = (url: string) => {
+    if (!url) return null;
+    const youtubeMatch = url.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/);
+    if (youtubeMatch) return { type: 'youtube', id: youtubeMatch[1] };
+    
+    const telegramMatch = url.match(/t\.me\/([^\/]+)\/(\d+)/);
+    if (telegramMatch) return { type: 'telegram', channel: telegramMatch[1], id: telegramMatch[2] };
+    
+    return null;
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Hero Section */}
@@ -250,14 +267,100 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Instructions Section */}
+      {/* Video Section */}
       <section className="py-32 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="mb-16 text-center">
+            <div className="mb-4 inline-block text-6xl">🎥</div>
+            <h2 className="mb-6 text-5xl font-bold text-primary md:text-6xl">
+              Видео о кимоно
+            </h2>
+            <p className="mx-auto max-w-2xl text-lg text-foreground/70">
+              Обзоры коллекции, истории создания и особенности каждого изделия
+            </p>
+          </div>
+
+          <div className="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {videoLinks.map((video, idx) => {
+              const videoData = getVideoId(video.url);
+              return (
+                <Card 
+                  key={video.id} 
+                  className="group overflow-hidden border-primary/20 bg-card/30 backdrop-blur-sm transition-all hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/10 animate-scale-in"
+                  style={{ animationDelay: `${idx * 150}ms` }}
+                >
+                  <div className="relative aspect-video overflow-hidden bg-black">
+                    {videoData?.type === 'youtube' ? (
+                      <iframe
+                        src={`https://www.youtube.com/embed/${videoData.id}`}
+                        className="h-full w-full"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                      />
+                    ) : videoData?.type === 'telegram' ? (
+                      <div className="flex h-full items-center justify-center bg-gradient-to-br from-primary/20 to-accent/20">
+                        <a 
+                          href={video.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex flex-col items-center gap-4 transition-transform hover:scale-110"
+                        >
+                          <div className="rounded-full bg-primary/20 p-6">
+                            <Icon name="Send" size={40} className="text-primary" />
+                          </div>
+                          <span className="text-sm font-medium text-primary">Смотреть в Telegram</span>
+                        </a>
+                      </div>
+                    ) : (
+                      <div className="flex h-full items-center justify-center">
+                        <div className="text-center">
+                          <Icon name="Video" size={64} className="mx-auto mb-4 text-primary/30" />
+                          <p className="text-sm text-foreground/50">Добавьте ссылку на видео</p>
+                          <p className="mt-2 text-xs text-foreground/40">YouTube или Telegram</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <div className="p-6">
+                    <h3 className="mb-2 text-lg font-semibold text-foreground">{video.title}</h3>
+                    <p className="text-sm text-foreground/60">{video.description}</p>
+                  </div>
+                </Card>
+              );
+            })}
+          </div>
+
+          <Card className="border-primary/30 bg-gradient-to-br from-primary/5 to-accent/5 p-8 backdrop-blur-sm md:p-12">
+            <div className="text-center">
+              <Icon name="Info" size={48} className="mx-auto mb-6 text-primary" />
+              <h3 className="mb-4 text-2xl font-bold text-primary">Как добавить свои видео</h3>
+              <div className="mx-auto max-w-2xl space-y-4 text-left text-foreground/70">
+                <div className="flex gap-3">
+                  <div className="shrink-0 text-primary">1.</div>
+                  <p>Загрузите видео на <strong className="text-primary">YouTube</strong> или опубликуйте в своём <strong className="text-primary">Telegram-канале</strong></p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="shrink-0 text-primary">2.</div>
+                  <p>Скопируйте ссылку на видео (например: <code className="rounded bg-black/30 px-2 py-1 text-xs">youtube.com/watch?v=...</code> или <code className="rounded bg-black/30 px-2 py-1 text-xs">t.me/канал/123</code>)</p>
+                </div>
+                <div className="flex gap-3">
+                  <div className="shrink-0 text-primary">3.</div>
+                  <p>В редакторе найдите строку с <code className="rounded bg-black/30 px-2 py-1 text-xs">url: ''</code> в массиве videoLinks и вставьте вашу ссылку</p>
+                </div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </section>
+
+      {/* Instructions Section */}
+      <section className="py-32 bg-gradient-to-b from-background to-black">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-4xl">
             <div className="mb-12 text-center">
               <Icon name="HelpCircle" size={48} className="mx-auto mb-4 text-primary" />
               <h2 className="mb-6 text-4xl font-bold text-primary md:text-5xl">
-                Как загрузить свои фотографии
+                Как загрузить фотографии
               </h2>
             </div>
 
@@ -305,9 +408,8 @@ const Index = () => {
                     <div>
                       <p className="font-semibold text-primary">Совет:</p>
                       <p className="text-sm text-foreground/70">
-                        Используйте качественные фотографии с хорошим освещением. 
-                        Для кимоно лучше всего подходят фото на нейтральном фоне, 
-                        для керамики — крупный план изделия
+                        Для фото: используйте качественные изображения с хорошим освещением.<br/>
+                        Для видео: загрузите на YouTube или Telegram, затем добавьте ссылку в код
                       </p>
                     </div>
                   </div>
